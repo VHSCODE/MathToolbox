@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
-set(SOURCE_FILES "src/main.cpp" "src/math_parser.cpp")
+set(SOURCE_FILES "src/main.cpp" "src/math_parser.cpp" src/Calculator.cpp src/Calculator.h)
 set(INCLUDE_DIRS "include/")
 
 add_executable(MathToolbox ${SOURCE_FILES})
