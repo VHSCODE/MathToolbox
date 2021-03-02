@@ -1,12 +1,9 @@
 #include "math_parser.h"
-
+#include <iostream>
 
 int main()
 {
-
-    string str;
-
-
+    std::string str;
     getline(std::cin,str);
     auto test = MathParser::parse(str);
 
