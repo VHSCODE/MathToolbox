@@ -7,7 +7,7 @@ namespace Utils
 
 	inline bool is_function(const std::string& expression)
 	{
-		//TODO add inverse trigonometric functiosn and the
+		//TODO add inverse trigonometric functions.
 		if (expression == "sin")
 			return true;
 		else if (expression == "cos")

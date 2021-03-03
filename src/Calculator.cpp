@@ -11,20 +11,7 @@ Calculator::Calculator()
 }
 float Calculator::evaluate_expression(std::string expression)
 {
-
-	std::string reverse_polish = MathParser::parse(expression);
-
-	std::vector<std::string> tokens = MathParser::tokenize(reverse_polish,' ');
-	std::vector<float> stack;
-
-	float result = 0.0f;
-
-	for(std::string token : tokens)
-	{
-		if(Utils::is_number(token))
-			stack.push_back(std::stof(token));
-	}
-
+	return 0;
 }
 
 

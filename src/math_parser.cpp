@@ -3,18 +3,41 @@
 #include <sstream>
 #include <stack>
 #include <iostream>
-
 MathParser::MathParser()
 {
 
 }
 
+BinaryTreeNode* MathParser::parse(const std::string& expression)
+{
+
+    std::string rpn_expression = to_rpn(expression);
+
+    std::stack<BinaryTreeNode*> stack;
+
+    for(std::string token : tokenize(rpn_expression,' '))
+    {
+        if(Utils::is_operator(token))
+        {
+            auto* right = stack.top();
+            stack.pop();
+            auto* left = stack.top();
+            stack.pop();
+
+            auto insert = new BinaryTreeNode(token,left,right);
+            stack.push(insert);
+        }
+        else
+            stack.push(new BinaryTreeNode(token));
+    }
+    return stack.top();
+}
 /**
- * Parses the mathematical expression to reverse polish notation using the Shunting-yard algorithm
+ * Convert the mathematical expression to reverse polish notation using the Shunting-yard algorithm
  * @param expression mathematical expression
  * @return string with reverse polish notation
  */
-std::string MathParser::parse(const std::string& expression)
+std::string MathParser::to_rpn(const std::string& expression)
 {
 
 	std::stack<std::string> output_stack;
@@ -64,13 +87,19 @@ std::string MathParser::parse(const std::string& expression)
             {
                 operator_stack.pop();
             }
-            if(Utils::is_function(operator_stack.top()))
+            if(!operator_stack.empty())
             {
-                std::string top = operator_stack.top();
-                operator_stack.pop();
-                output_stack.push(top);
-
+            	if(Utils::is_function(operator_stack.top()))
+				{
+					std::string top = operator_stack.top();
+					operator_stack.pop();
+					output_stack.push(top);
+				}
             }
+        }
+        else
+        {
+            output_stack.push(token);
         }
         index++;
     }
@@ -102,6 +131,7 @@ std::string MathParser::parse(const std::string& expression)
 	}
     return string_output;
 }
+
 
 
 std::vector<std::string> MathParser::tokenize( const std::string& str, char delim )
