@@ -3,14 +3,16 @@
 //
 
 #include "Calculator.h"
+#include "BinaryTree.h"
 #include "math_parser.h"
 #include "utils.h"
 Calculator::Calculator()
 {
 
 }
-float Calculator::evaluate_expression(std::string expression)
+float Calculator::evaluate_expression(BinaryTreeNode<std::string>* root)
 {
+
 	return 0;
 }
 

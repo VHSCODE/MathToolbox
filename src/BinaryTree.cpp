@@ -1,13 +1,14 @@
 #include "BinaryTree.h"
 
-BinaryTreeNode::BinaryTreeNode(std::string val, BinaryTreeNode* left , BinaryTreeNode* right)
+template <class T>
+BinaryTreeNode<T>::BinaryTreeNode(T val, BinaryTreeNode* left , BinaryTreeNode* right)
 {
     this->val = val;
     this->left = left;
     this->right = right;
 }
-
-BinaryTreeNode::BinaryTreeNode(std::string val)
+template <class T >
+BinaryTreeNode<T>::BinaryTreeNode(T val)
 {
     this->val = val;
     this->left = nullptr;
