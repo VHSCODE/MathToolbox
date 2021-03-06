@@ -1,11 +1,12 @@
 #pragma once
 
 #include <string>
-
+#include <iostream>
+#include <sstream>
 namespace Utils
 {
 
-	inline bool is_function(const std::string& expression)
+	inline bool is_function(const std::string &expression)
 	{
 		//TODO add inverse trigonometric functions.
 		if (expression == "sin")
@@ -36,10 +37,9 @@ namespace Utils
 			return true;
 		else
 			return false;
-
 	}
 
-	inline bool is_number(const std::string& expression)
+	inline bool is_number(const std::string &expression)
 	{
 		for (char ch : expression)
 		{
@@ -51,24 +51,24 @@ namespace Utils
 		return true;
 	}
 
-/**
- * @brief associativity
- * @param op operator
- * @return true if left associativity, false if not
- */
-	inline bool associativity(const std::string& op)
+	/**
+	 * @brief associativity
+	 * @param op operator
+	 * @return true if left associativity, false if not
+	 */
+	inline bool associativity(const std::string &op)
 	{
 		if (op == "^")
 			return false;
 		return true;
 	}
 
-/**
- * @brief precedes
- * @param op1
- * @return 1 if op1 has greater precedence than op2, -1 if not, 0 if equal precedence
- */
-	inline int precedes(const std::string& op1, const std::string& op2)
+	/**
+	 * @brief precedes
+	 * @param op1
+	 * @return 1 if op1 has greater precedence than op2, -1 if not, 0 if equal precedence
+	 */
+	inline int precedes(const std::string &op1, const std::string &op2)
 	{
 		if (op1 == "-" || op1 == "+")
 		{
@@ -91,9 +91,8 @@ namespace Utils
 			return 1;
 		}
 		return 0;
-
 	}
-	inline bool is_operator(const std::string& expression)
+	inline bool is_operator(const std::string &expression)
 	{
 		if (expression == "+")
 			return true;
@@ -107,5 +106,18 @@ namespace Utils
 			return true;
 		else
 			return false;
+	}
+	
+	inline std::vector<std::string> split(const std::string &str, char delim)
+	{
+		std::vector<std::string> tokens;
+
+		std::stringstream stream(str);
+		std::string temp;
+		while (getline(stream, temp, delim))
+		{
+			tokens.push_back(temp);
+		}
+		return tokens;
 	}
 }
