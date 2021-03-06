@@ -71,3 +71,9 @@ Thumbs.db
 *.dll
 *.exe
 
+
+.idea/
+.vscode/
+build/
+cmake-build-debug/
+.cache/
